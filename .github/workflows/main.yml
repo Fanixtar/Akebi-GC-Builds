@@ -19,10 +19,9 @@ jobs:
     - name: Install MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Copy Akebi-GC and Disable Custom Build Steps
+    - name: Disable Custom Build Steps
       shell: bash
       run: |
-        cp ./* $GITHUB_WORKSPACE
         $GITHUB_WORKSPACE/CustomBuildStepsDisabler.exe
         
     - name: Build Akebi-GC solution
