@@ -47,11 +47,12 @@ jobs:
     - name: Download build artifact
       uses: actions/download-artifact@v3.0.0
         
-    - name: Check list of files
+    - name: Rename build into ZIP file
       shell: bash
       run: |
-        ls ./
         mv Akebi-GC-release Akebi-GC-release.zip
       
     - name: Publish Akebi-GC
-      uses: nickatnight/releases-action@v2
+      uses: softprops/action-gh-release@v1
+      with:
+        files: Akebi-GC-release.zip
