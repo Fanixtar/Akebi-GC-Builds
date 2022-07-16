@@ -57,6 +57,6 @@ jobs:
         ls ./
       
     - name: Publish Akebi-GC
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
       with:
         files: Akebi-GC-release.zip
