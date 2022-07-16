@@ -54,6 +54,4 @@ jobs:
         mv Akebi-GC-release Akebi-GC-release.zip
       
     - name: Publish Akebi-GC
-      uses: yakuhzi/release-asset@v1.2.3
-      with:
-        file: ./Akebi-GC-release.zip
+      uses: nickatnight/releases-action@v2
