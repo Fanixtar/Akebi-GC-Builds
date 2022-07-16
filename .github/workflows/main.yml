@@ -35,5 +35,5 @@ jobs:
       uses: actions/upload-artifact@v3.1.0
       with:
         name: Akebi-GC
-        path: ./Akebi-GC/bin/Release/*
+        path: ./Akebi-GC/bin/Release-x64/*
         if-no-files-found: error
