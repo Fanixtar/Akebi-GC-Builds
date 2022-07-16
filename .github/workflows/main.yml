@@ -33,7 +33,9 @@ jobs:
         
     - name: Removing unused files
       shell: bash
-      run: rm -rf ./Akebi-GC/bin/Release-x64/obj
+      run: |
+        rm -rf ./Akebi-GC/bin/Release-x64/obj
+        rm -rf ./Akebi-GC/bin/Release-x64/*.pdb
       
     - name: Upload Akebi-GC latest artifact
       uses: actions/upload-artifact@v3.1.0
