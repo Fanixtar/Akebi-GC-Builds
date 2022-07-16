@@ -43,3 +43,10 @@ jobs:
         name: Akebi-GC
         path: ./Akebi-GC/bin/Release-x64/*
         if-no-files-found: error
+        
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.0
+        
+    - name: Check list of files
+      shell: bash
+      run: list -R ./
