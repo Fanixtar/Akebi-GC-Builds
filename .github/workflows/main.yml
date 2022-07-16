@@ -19,12 +19,15 @@ jobs:
     - name: Clone Akebi-GC
       shell: bash
       run: |
+        wget https://gist.githubusercontent.com/sayedihashimi/6c352cb78591f7abe04f/raw/39ce45866fec3afd5c937262c65aa5d1855405a1/nopreorpostevents.targets
         git clone --recurse-submodules https://github.com/Akebi-Group/Akebi-GC
         cd Akebi-GC
         ls ./
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
+      env:
+        CustomAfterMicrosoftCommonTargets: ./nopreorpostevents.targets
 
     - name: Build
       working-directory: ./Akebi-GC
