@@ -40,7 +40,7 @@ jobs:
     - name: Upload Akebi-GC latest artifact
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: Akebi-GC
+        name: Akebi-GC-release
         path: ./Akebi-GC/bin/Release-x64/*
         if-no-files-found: error
         
@@ -49,9 +49,11 @@ jobs:
         
     - name: Check list of files
       shell: bash
-      run: ls ./
+      run: |
+        ls ./
+        mv Akebi-GC-release Akebi-GC-release.zip
       
     - name: Publish Akebi-GC
       uses: yakuhzi/release-asset@v1.2.3
       with:
-        file: ./Akebi-GC.zip
+        file: ./Akebi-GC-release.zip
