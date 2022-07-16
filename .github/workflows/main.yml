@@ -44,9 +44,14 @@ jobs:
         path: ./Akebi-GC/bin/Release-x64/*
         if-no-files-found: error
         
-    - name: Download a Build Artifact
+    - name: Download build artifact
       uses: actions/download-artifact@v3.0.0
         
     - name: Check list of files
       shell: bash
-      run: list -R ./
+      run: ls ./
+      
+    - name: Publish Akebi-GC
+      uses: yakuhzi/release-asset@v1.2.3
+      with:
+        file: ./Akebi-GC.zip
