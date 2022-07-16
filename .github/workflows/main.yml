@@ -10,7 +10,7 @@ env:
   BUILD_CONFIGURATION: Release
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -54,6 +54,7 @@ jobs:
       shell: bash
       run: |
         mv Akebi-GC-release Akebi-GC-release.zip
+        ls ./
       
     - name: Publish Akebi-GC
       uses: softprops/action-gh-release@v1
