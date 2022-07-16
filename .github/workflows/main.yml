@@ -1,9 +1,6 @@
 name: Publish
 
-on:
-  push:
-    tags:
-      - '*'
+on: workflow_dispatch
 
 env:
   SOLUTION_FILE_PATH: ./akebi-gc.sln
