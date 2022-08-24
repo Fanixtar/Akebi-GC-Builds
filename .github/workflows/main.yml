@@ -2,8 +2,8 @@ name: Publish
 
 on: 
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * 0"
+  #schedule:
+  #  - cron: "0 0 * * 0"
 
 env:
   SOLUTION_FILE_PATH: ./akebi-gc.sln
@@ -19,23 +19,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: Fanixtar/Akebi-chan-no-Sailor-fuku
-        ref: 3.0-interactive-map
+        repository: Akebi/Akebi-GC
         submodules: recursive
 
     - name: Install MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Clone Akebi-GC and Disable Custom Build Steps
+    - name: Disable Custom Build Steps
       shell: bash
-        #git clone --recurse-submodules https://github.com/Akebi-Group/Akebi-GC
-        #cd Akebi-GC
       run: |
         curl -o CustomBuildStepsDisabler.exe https://raw.githubusercontent.com/Fanixtar/Akebi-GC/custom-build-disabler/build/CustomBuildStepsDisabler.exe
         ./CustomBuildStepsDisabler.exe
         
     - name: Build Akebi-GC solution
-      #working-directory: ./Akebi-GC
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
         
     - name: Removing unused files
