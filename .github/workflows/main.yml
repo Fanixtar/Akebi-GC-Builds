@@ -18,15 +18,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        repository: Fanixtar/Akebi-chan-no-Sailor-fuku
+        ref: 3.0-interactive-map
 
     - name: Install MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Clone Akebi-GC and Disable Custom Build Steps
       shell: bash
+        #git clone --recurse-submodules https://github.com/Akebi-Group/Akebi-GC
+        #cd Akebi-GC
       run: |
-        git clone --recurse-submodules https://github.com/Akebi-Group/Akebi-GC
-        cd Akebi-GC
         curl -o CustomBuildStepsDisabler.exe https://raw.githubusercontent.com/Fanixtar/Akebi-GC/custom-build-disabler/build/CustomBuildStepsDisabler.exe
         ./CustomBuildStepsDisabler.exe
         
@@ -37,26 +40,26 @@ jobs:
     - name: Removing unused files
       shell: bash
       run: |
-        rm -rf ./Akebi-GC/bin/Release-x64/obj
-        rm -rf ./Akebi-GC/bin/Release-x64/*.pdb
+        rm -rf ./bin/Release-x64/obj
+        rm -rf ./bin/Release-x64/*.pdb
       
     - name: Upload Akebi-GC latest artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: Akebi-GC-release
-        path: ./Akebi-GC/bin/Release-x64/*
+        path: ./bin/Release-x64/*
         if-no-files-found: error
         
-    - name: Download build artifact
-      uses: actions/download-artifact@v3.0.0
+    #- name: Download build artifact
+    #  uses: actions/download-artifact@v3.0.0
         
-    - name: Rename build into ZIP file
-      shell: bash
-      run: |
-        mv Akebi-GC-release Akebi-GC-release.zip
-        ls ./
+    #- name: Rename build into ZIP file
+    #  shell: bash
+    #  run: |
+    #    mv Akebi-GC-release Akebi-GC-release.zip
+    #    ls ./
       
-    - name: Publish Akebi-GC
-      uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
-      with:
-        files: Akebi-GC-release.zip
+    #- name: Publish Akebi-GC
+    #  uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
+    #  with:
+    #    files: Akebi-GC-release.zip
