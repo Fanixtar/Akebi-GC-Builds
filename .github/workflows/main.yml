@@ -21,6 +21,7 @@ jobs:
       with:
         repository: Fanixtar/Akebi-chan-no-Sailor-fuku
         ref: 3.0-interactive-map
+        submodules: recursive
 
     - name: Install MSBuild
       uses: microsoft/setup-msbuild@v1.0.2
