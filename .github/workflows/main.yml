@@ -19,7 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: Akebi/Akebi-GC
+        repository: Fanixtar/Akebi-GC
+        ref: 3.0-test-imap
         submodules: recursive
 
     - name: Install MSBuild
